@@ -1,8 +1,9 @@
-﻿@{
+﻿@model FoundryLanding.Models.Home.IndexViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>TODO: list of available games for user @Model.UserModel.UserName#@Model.UserModel.Discriminator</p>
 </div>

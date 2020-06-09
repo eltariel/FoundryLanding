@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FoundryLanding.Models;
+using FoundryLanding.Models.Data;
+using FoundryLanding.Models.Home;
 
 namespace FoundryLanding.Controllers
 {
@@ -24,8 +26,15 @@ namespace FoundryLanding.Controllers
             {
                 _logger.LogInformation($"Header [{header}] = {string.Join(", ", values)}");
             }
+
+            var userName = HttpContext.Request.Headers["X-Vouch-User"][0];
+            var discriminator = HttpContext.Request.Headers["X-Vouch-IdP-Claims-Discriminator"][0];
+            var email = HttpContext.Request.Headers["X-Vouch-IdP-Claims-Email"][0];
+            var userid = HttpContext.Request.Headers["X-Vouch-IdP-Claims-Id"][0];
             
-            return View();
+            var user = new UserModel(userName, discriminator, email, userid);
+            
+            return View(new IndexViewModel(user));
         }
 
         public IActionResult Privacy()
