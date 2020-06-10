@@ -4,11 +4,11 @@ namespace FoundryLanding.Models.Home
 {
     public class IndexViewModel
     {
-        public IndexViewModel(UserModel userModel)
+        public IndexViewModel(User user)
         {
-            UserModel = userModel;
+            User = user;
         }
 
-        public UserModel UserModel { get; }
+        public User User { get; }
     }
 }
