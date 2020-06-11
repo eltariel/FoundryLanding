@@ -1,7 +1,7 @@
 ﻿@model FoundryLanding.Models.Data.Player
 
 <li>
-    <a href="#" onclick="join_game('@Model.World.HostName', '@Model.PlayerHash', '@Model.Password')">
+    <a href="@Model.World.HostName/authenticate?playerId=@Model.PlayerHash">
         @Model.Name (@Model.PlayerHash): @Model.Password
     </a>
 </li>

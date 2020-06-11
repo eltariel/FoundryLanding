@@ -89,7 +89,7 @@ namespace FoundryLanding.Controllers
             }
 
             var headerUser = Models.Data.User.MakeFromHeaders(HttpContext.Request.Headers);
-            var user = Users.FirstOrDefault(u => u.Id == (headerUser?.Id ?? ""));
+            var user = Users.FirstOrDefault(u => u.Id == (headerUser?.Id ?? "")) ?? Users[0];
             
             return View(new IndexViewModel(user));
         }
@@ -97,6 +97,17 @@ namespace FoundryLanding.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Authenticate([FromQuery] string playerId)
+        {
+            var player = Players.FirstOrDefault(p => p.PlayerHash == playerId);
+            if (player == null)
+            {
+                throw new ArgumentException("Can't find player");
+            }
+            
+            return View(player);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
