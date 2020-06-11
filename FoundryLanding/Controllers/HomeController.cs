@@ -23,9 +23,9 @@ namespace FoundryLanding.Controllers
         
         public static List<World> Games = new List<World>
         {
-            new World(Users, "Dev", new Uri("https://dev.foundry.eltariel.com"), path: "/path/to/world"),
-            new World(Users, "Saltmash", new Uri("https://saltmash.foundry.eltariel.com"), "/path/to/world"),
-            new World(Users, "Shadouganai", new Uri("https://shadouganai.foundry.eltariel.com"), "/path/to/world"),
+            new World(Users, "Dev", "https://dev.foundry.eltariel.com", path: "/path/to/world"),
+            new World(Users, "Saltmash", "https://saltmash.foundry.eltariel.com", "/path/to/world"),
+            new World(Users, "Shadouganai", "https://shadouganai.foundry.eltariel.com", "/path/to/world"),
         };
         
         public static List<Player> Players = new List<Player>

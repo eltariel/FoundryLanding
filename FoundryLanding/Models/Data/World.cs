@@ -5,7 +5,7 @@ namespace FoundryLanding.Models.Data
 {
     public class World
     {
-        public World(IEnumerable<User> owners, string name, Uri hostName, string path)
+        public World(IEnumerable<User> owners, string name, string hostName, string path)
         {
             Owners = new List<User>(owners);
             Name = name;
@@ -16,7 +16,7 @@ namespace FoundryLanding.Models.Data
         public IEnumerable<User> Owners { get; }
         
         public string Name { get; }
-        public Uri HostName { get; }
+        public string HostName { get; }
         public string Path { get; }
 
         public List<User> Users { get; } = new List<User>();
