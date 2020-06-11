@@ -3,7 +3,7 @@
 
 // Write your JavaScript code.
 function join_game(gameHost, playerId, password) {
-    const url = gameHost + "join"
+    const url = gameHost + "/join"
     const formData = new FormData()
     formData.append("userid", playerId)
     formData.append("password", password)
@@ -19,7 +19,7 @@ function join_game(gameHost, playerId, password) {
         .then(res => {
             console.log(res)
             if ( res.status === "success" ) {
-                window.location.href = res.redirect
+                window.location.href = gameHost + res.redirect
             }
             else {
                 console.log("Failure?")

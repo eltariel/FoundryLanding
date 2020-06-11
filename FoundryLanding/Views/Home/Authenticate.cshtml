@@ -9,3 +9,33 @@
 <a href="#" onclick="join_game('@Model.World.HostName', '@Model.PlayerHash', '@Model.Password')">
     @Model.Name (@Model.PlayerHash): @Model.Password
 </a>
+
+@section Scripts {
+<script type="text/javascript">
+function join_game(gameHost, playerId, password) {
+    const url = gameHost + "/join"
+    const formData = new FormData()
+    formData.append("userid", playerId)
+    formData.append("password", password)
+
+    fetch(url, {
+        body: formData,
+        method: "POST"
+    })
+        .then(data => {
+            console.log(data)
+            return data.json()
+        })
+        .then(res => {
+            console.log(res)
+            if ( res.status === "success" ) {
+                window.location.href = gameHost + res.redirect
+            }
+            else {
+                console.log("Failure?")
+            }
+        })
+        .catch(error => { console.log(error) })
+}
+</script>
+}
