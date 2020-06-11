@@ -24,6 +24,7 @@ namespace FoundryLanding.Controllers
         public static List<World> Games = new List<World>
         {
             new World(Users, "Dev", "https://dev.foundry.eltariel.com", path: "/path/to/world"),
+            new World(Users, "Ghosts of Shouganai", "https://ghosts-of-shouganai.foundry.eltariel.com", path: "/path/to/world"),
             new World(Users, "Saltmash", "https://saltmash.foundry.eltariel.com", "/path/to/world"),
             new World(Users, "Shadouganai", "https://shadouganai.foundry.eltariel.com", "/path/to/world"),
         };
@@ -33,18 +34,27 @@ namespace FoundryLanding.Controllers
             // NOTES: Read these from <world-path>/data/users.db - they're in NeDB (JSON object per line).
             // Dev
             new Player(Users[0], Games[0], "Name", "xzcvl;dga", "GM"),
+            
+            // Ghosts of Shouganai
+            new Player(Users[0], Games[1], "Thryth", "NTY1NTVhYWI0ZmM5", ""),
+            new Player(Users[0], Games[1], "Ann", "NGQ2ZDA1YjdhYTYy", ""),
+            new Player(Users[0], Games[1], "Elliekin", "N2U2NDhiZTU5ZThk", ""),
+            new Player(Users[0], Games[1], "Dawn", "NmFlMzhlMWZmZTAz", ""),
+            new Player(Users[0], Games[1], "Branwen", "MjdjMGQ5MTUyNmI4", ""),
+            new Player(Users[0], Games[1], "Wage", "Yjk3YWZlOTI2NDNk", ""),
+            
 
             // Saltmash
-            new Player(Users[0], Games[1], "Coral", "1oLDqAEWxXCFYg6M", "PLAYER"),
-            new Player(Users[0], Games[1], "Other GM", "UJciiUScKNC2Vs46", "OGM"),
-            new Player(Users[0], Games[1], "Gamemaster", "jL80ypXqNSXN0FCR", "GM"),
-            new Player(Users[0], Games[1], "Styrm", "jhtc7EAWs25790YB", "PLAYER"),
-            new Player(Users[0], Games[1], "ASS", "uGL2iEbfLM4gi0Cv", "ASS"),
+            new Player(Users[0], Games[2], "Coral", "1oLDqAEWxXCFYg6M", "PLAYER"),
+            new Player(Users[0], Games[2], "Other GM", "UJciiUScKNC2Vs46", "OGM"),
+            new Player(Users[0], Games[2], "Gamemaster", "jL80ypXqNSXN0FCR", "GM"),
+            new Player(Users[0], Games[2], "Styrm", "jhtc7EAWs25790YB", "PLAYER"),
+            new Player(Users[0], Games[2], "ASS", "uGL2iEbfLM4gi0Cv", "ASS"),
             
             // Shadouganai
-            new Player(Users[0], Games[2], "Gamemaster", "UhrYXHlql2AhabZT", ""), 
-            new Player(Users[0], Games[2], "GM2", "SkDOLsjNX956Sdz3", ""), 
-            new Player(Users[0], Games[2], "GM3", "vUMfM4Af2j0Ege6C", ""),
+            new Player(Users[0], Games[3], "Gamemaster", "UhrYXHlql2AhabZT", ""), 
+            new Player(Users[0], Games[3], "GM2", "SkDOLsjNX956Sdz3", ""), 
+            new Player(Users[0], Games[3], "GM3", "vUMfM4Af2j0Ege6C", ""),
         };
         // END DATASET
         
