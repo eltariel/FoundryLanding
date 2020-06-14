@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoundryLanding", "FoundryLanding\FoundryLanding.csproj", "{8434E2AB-537E-402E-A5BF-876FA815709C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foundry.Landing", "Foundry.Landing\Foundry.Landing.csproj", "{8434E2AB-537E-402E-A5BF-876FA815709C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldReader", "WorldReader\WorldReader.csproj", "{A9422CFC-C63B-4FA9-831D-071A240D9865}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foundry.WorldReader", "Foundry.WorldReader\Foundry.WorldReader.csproj", "{A9422CFC-C63B-4FA9-831D-071A240D9865}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldReaderTester", "WorldReaderTester\WorldReaderTester.csproj", "{A651E784-3C39-4F07-B8DF-BC00C2C984ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foundry.WorldReader.Tester", "Foundry.WorldReader.Tester\Foundry.WorldReader.Tester.csproj", "{A651E784-3C39-4F07-B8DF-BC00C2C984ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
