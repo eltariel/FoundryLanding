@@ -42,7 +42,7 @@ namespace FoundryLanding.Controllers
         public IActionResult Authenticate([FromQuery] string playerId)
         {
             user = PopulateDiscordUser();
-            var foundryUser = user.FoundryUsers.FirstOrDefault(u => u.Id == playerId);
+            var foundryUser = user.FoundryUsers.FirstOrDefault(u => u.Id == playerId || u.World.Owners.Contains(user.FullName));
             if (foundryUser == null)
             {
                 throw new ArgumentException("Can't find player");
@@ -70,7 +70,8 @@ namespace FoundryLanding.Controllers
                 .SelectMany(h => h.Worlds)
                 .SelectMany(w => w.Users)
                 .Where(u => u.DiscordUser == "" ||
-                            u.DiscordUser == $"{discordUser.UserName}#{discordUser.Discriminator}");
+                            u.DiscordUser == discordUser.FullName ||
+                            u.World.Owners.Contains(discordUser.FullName));
 
             discordUser.FoundryUsers.AddRange(mine);
             return discordUser;

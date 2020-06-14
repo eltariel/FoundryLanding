@@ -4,17 +4,29 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Hi @Model.UserName#@Model.Discriminator!</h1>
+    <h1 class="display-4">Hi @Model.UserName!</h1>
 </div>
 <div id="world-list">
     <ul>
-        @foreach (var user in Model.FoundryUsers)
+        @{ var userByWorld = Model.FoundryUsers.GroupBy(u => u.World); }
+        @foreach (var uw in userByWorld)
         {
-            <li>
-                <a href="@user.World.Host.Url/authenticate?playerId=@user.Id">
-                    @user.World.Name: @user.Name (@user.Id) - @user.Password
-                </a>
-            </li>
+            var w = uw.Key;
+            <dl>
+                <dt>World: @w.Name</dt>
+                <dd>
+                    <ul>
+                        @foreach (var user in uw)
+                        {
+                            <li>
+                                <a href="@user.World.Host.Url/authenticate?playerId=@user.Id">
+                                    @user.World.Name: @user.Name (@user.Id) - @user.Password
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </dd>
+            </dl>
         }
     </ul>
 </div>

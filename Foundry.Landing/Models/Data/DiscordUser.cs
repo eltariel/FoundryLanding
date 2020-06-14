@@ -22,6 +22,8 @@ namespace FoundryLanding.Models.Data
 
         public List<World> Worlds => FoundryUsers.Select(u => u.World).Distinct().ToList();
         public List<User> FoundryUsers { get; } = new List<User>();
+        
+        public string FullName => $"{UserName}#{Discriminator}";
 
         public static DiscordUser MakeFromHeaders(IHeaderDictionary headers)
         {

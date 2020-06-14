@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 
 namespace Foundry.WorldReader
@@ -18,7 +19,9 @@ namespace Foundry.WorldReader
         public string Name { get; private set; }
         public string Title { get; private set; }
         public string GameSystem { get; private set; }
-        
+
+
+        public List<string> Owners { get; private set; }
 
         public List<User> Users { get; } = new List<User>();
 
@@ -28,6 +31,7 @@ namespace Foundry.WorldReader
             Name = (string) world["name"];
             Title = (string) world["title"];
             GameSystem = (string) world["system"];
+            Owners = (world["owners"]?.ToObject<string[]>() ?? new string[0]).ToList();
 
             LoadUsers();
             return this;
