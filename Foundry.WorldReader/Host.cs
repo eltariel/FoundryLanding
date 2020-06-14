@@ -12,6 +12,7 @@ namespace Foundry.WorldReader
         }
 
         public string DataPath { get; }
+        public string Url { get; private set; }
 
         public World DefaultWorld { get; private set; }
         public List<World> Worlds { get; } = new List<World>();
@@ -20,6 +21,7 @@ namespace Foundry.WorldReader
         {
             var options = JObject.Parse(File.ReadAllText(Path.Combine(DataPath, "Config", "options.json")));
             var defWorld = (string)options["world"];
+            Url = (string)options["url"];
 
             LoadWorlds(defWorld);
             return this;

@@ -1,14 +1,21 @@
-﻿@model FoundryLanding.Models.Home.IndexViewModel
+﻿@model FoundryLanding.Models.Data.DiscordUser
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Hi @Model.DiscordUser.UserName#@Model.DiscordUser.Discriminator!</h1>
+    <h1 class="display-4">Hi @Model.UserName#@Model.Discriminator!</h1>
 </div>
 <div id="world-list">
     <ul>
-        @Html.DisplayFor(m => m.DiscordUser.Worlds)
+        @foreach (var user in Model.FoundryUsers)
+        {
+            <li>
+                <a href="@user.World.Host.Url/authenticate?playerId=@Model.Id">
+                    @user.World.Name: @user.Name (@user.Id) - @user.Password
+                </a>
+            </li>
+        }
     </ul>
 </div>
 

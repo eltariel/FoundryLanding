@@ -18,6 +18,7 @@ namespace Foundry.WorldReader
         public string Name { get; private set; }
         public string Title { get; private set; }
         public string GameSystem { get; private set; }
+        
 
         public List<User> Users { get; } = new List<User>();
 
@@ -37,7 +38,7 @@ namespace Foundry.WorldReader
             var usersDb = File.ReadAllLines(Path.Combine(WorldPath, "data", "users.db"));
             foreach (var line in usersDb)
             {
-                var u = User.Parse(line);
+                var u = User.Parse(line, this);
                 Users.Add(u);
             }
         }

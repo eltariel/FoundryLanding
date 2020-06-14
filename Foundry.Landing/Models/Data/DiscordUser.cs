@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Foundry.WorldReader;
 using Microsoft.AspNetCore.Http;
 
 namespace FoundryLanding.Models.Data
@@ -17,9 +19,9 @@ namespace FoundryLanding.Models.Data
         public string Discriminator { get; }
         public string Email { get; }
         public string Id { get; }
-        
-        public List<World> Worlds { get; } = new List<World>();
-        public List<Player> Players { get; } = new List<Player>();
+
+        public List<World> Worlds => FoundryUsers.Select(u => u.World).Distinct().ToList();
+        public List<User> FoundryUsers { get; } = new List<User>();
 
         public static DiscordUser MakeFromHeaders(IHeaderDictionary headers)
         {
@@ -35,7 +37,7 @@ namespace FoundryLanding.Models.Data
             }
             catch
             {
-                return null;
+                return new DiscordUser("Unknown User", "0000", "nobody@example.com", "no-id");
             }
         }
     }

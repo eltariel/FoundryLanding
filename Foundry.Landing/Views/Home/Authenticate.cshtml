@@ -1,4 +1,4 @@
-﻿@model FoundryLanding.Models.Data.Player
+﻿@model Foundry.WorldReader.User
 
 @{
     ViewBag.Title = "Authenticating";
@@ -6,7 +6,7 @@
 }
 
 <h2>Authenticating @Model.Name in world @Model.World.Name</h2>
-<a href="#" onclick="join_game('@Model.World.HostName', '@Model.PlayerHash', '@Model.Password')">
+<a href="#" onclick="join_game('@Model.World.Host.Url', '@Model.Id', '@Model.Password')">
     Click here if not redirected atomatically.
 </a>
 
@@ -39,7 +39,7 @@ function join_game(gameHost, playerId, password) {
 }
 
 window.onload = function() {
-  join_game('@Model.World.HostName', '@Model.PlayerHash', '@Model.Password')
+  join_game('@Model.World.Host.Url', '@Model.Id', '@Model.Password')
 }
 </script>
 }
