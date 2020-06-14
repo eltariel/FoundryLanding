@@ -42,7 +42,7 @@ namespace FoundryLanding.Controllers
         public IActionResult Authenticate([FromQuery] string playerId)
         {
             user = PopulateDiscordUser();
-            var foundryUser = user.FoundryUsers.FirstOrDefault(u => u.Id == playerId || u.World.Owners.Contains(user.FullName));
+            var foundryUser = user.FoundryUsers.FirstOrDefault(u => u.Id == playerId);
             if (foundryUser == null)
             {
                 throw new ArgumentException("Can't find player");
