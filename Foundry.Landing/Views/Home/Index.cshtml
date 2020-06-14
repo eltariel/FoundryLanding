@@ -11,7 +11,7 @@
         @foreach (var user in Model.FoundryUsers)
         {
             <li>
-                <a href="@user.World.Host.Url/authenticate?playerId=@Model.Id">
+                <a href="@user.World.Host.Url/authenticate?playerId=@user.Id">
                     @user.World.Name: @user.Name (@user.Id) - @user.Password
                 </a>
             </li>
