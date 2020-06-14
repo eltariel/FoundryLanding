@@ -42,8 +42,12 @@ namespace Foundry.WorldReader
             var usersDb = File.ReadAllLines(Path.Combine(WorldPath, "data", "users.db"));
             foreach (var line in usersDb)
             {
-                var u = User.Parse(line, this);
-                Users.Add(u);
+                var user = User.Parse(line, this);
+                Users.RemoveAll(u => u.Id == user.Id);
+                if (!user.IsDeleted)
+                {
+                    Users.Add(user);
+                }
             }
         }
     }
