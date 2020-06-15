@@ -15,4 +15,8 @@
       <ProjectReference Include="..\Foundry.WorldReader\Foundry.WorldReader.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Models\Home" />
+    </ItemGroup>
+
 </Project>

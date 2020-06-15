@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace FoundryLanding
+namespace Foundry.Landing
 {
     public class Program
     {

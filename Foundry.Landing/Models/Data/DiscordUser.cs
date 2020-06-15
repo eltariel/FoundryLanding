@@ -3,7 +3,7 @@ using System.Linq;
 using Foundry.WorldReader;
 using Microsoft.AspNetCore.Http;
 
-namespace FoundryLanding.Models.Data
+namespace Foundry.Landing.Models.Data
 {
     public class DiscordUser
     {

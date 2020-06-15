@@ -1,4 +1,5 @@
-﻿@model FoundryLanding.Models.Data.DiscordUser
+﻿@using Foundry.WorldReader
+@model Foundry.Landing.Models.Data.DiscordUser
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -20,7 +21,7 @@
                         {
                             <li>
                                 <a href="@user.World.Host.Url/authenticate?playerId=@user.Id">
-                                    @user.Name (@user.Id)
+                                    @(user.Role > UserRole.Player ? $"({user.Role}) " : "")<b>@user.Name</b>
                                 </a>
                             </li>
                         }

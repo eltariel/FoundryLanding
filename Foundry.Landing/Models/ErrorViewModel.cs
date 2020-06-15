@@ -1,4 +1,4 @@
-namespace FoundryLanding.Models
+namespace Foundry.Landing.Models
 {
     public class ErrorViewModel
     {

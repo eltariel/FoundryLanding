@@ -3,26 +3,24 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Foundry.Landing.Models;
+using Foundry.Landing.Models.Data;
 using Foundry.WorldReader;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using FoundryLanding.Models;
-using FoundryLanding.Models.Data;
-using FoundryLanding.Models.Home;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
-namespace FoundryLanding.Controllers
+namespace Foundry.Landing.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> logger;
-        private string dataPath;
-        private List<Host> hosts;
+        private readonly List<Host> hosts;
         private DiscordUser user;
 
         public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
-            dataPath = configuration.GetSection("Foundry")["DataPath"];
+            var dataPath = configuration.GetSection("Foundry")["DataPath"];
             this.logger = logger;
 
             hosts = ReadHostData(dataPath);
@@ -69,9 +67,12 @@ namespace FoundryLanding.Controllers
             var mine = hosts
                 .SelectMany(h => h.Worlds)
                 .SelectMany(w => w.Users)
-                .Where(u => u.DiscordUser == "" ||
-                            u.DiscordUser == discordUser.FullName ||
-                            u.World.Owners.Contains(discordUser.FullName));
+                .Where(u =>
+                    u.DiscordUser == discordUser.FullName ||
+                    u.World.Users.Any(wu=> 
+                        wu.Role == UserRole.Gamemaster &&
+                        wu.DiscordUser == discordUser.FullName) ||
+                    u.World.Owners.Contains(discordUser.FullName));
 
             discordUser.FoundryUsers.AddRange(mine);
             return discordUser;
